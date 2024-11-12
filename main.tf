@@ -2,15 +2,15 @@
 # Copyright 2024 Emmanuel Bergerat
 #
 
-# Created  on: #{CREATIONDATE}#
+# Created  on: 2024-11-12
 # Created  by: Emmanuel
 # Modified on: 
 # Modified by: 
 # Overview:
 #   This Azure Container Registry module:
-#   - ,
-#   - .
+#   - Creates an azure container registry,
 #
+
 
 # -
 # - Generate base for the Azure Container Registry Resource

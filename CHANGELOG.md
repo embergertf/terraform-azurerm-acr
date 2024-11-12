@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 ### Removed -->
 
-## [1.0.0] - #{CREATIONDATE}# - Azure Container Registry module 1st Release
+## [1.0.0] - 2024-11-12 - Azure Container Registry module 1st Release
 
 ### Added
 
