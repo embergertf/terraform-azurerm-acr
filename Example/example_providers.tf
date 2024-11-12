@@ -3,7 +3,7 @@
 #
 
 #--------------------------------------------------------------
-#   Example #{MODULEDISPLAYNAME}# required Terraform providers with their versions
+#   Example Azure Container Registry required Terraform providers with their versions
 #--------------------------------------------------------------
 terraform {
   required_providers {

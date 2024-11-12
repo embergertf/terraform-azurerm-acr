@@ -3,7 +3,7 @@
 #
 
 #--------------------------------------------------------------
-#   #{MODULEDISPLAYNAME}# locals
+#   Azure Container Registry locals
 #--------------------------------------------------------------
 # / locals group 1
 locals {

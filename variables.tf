@@ -3,15 +3,15 @@
 #
 
 #--------------------------------------------------------------
-#   #{MODULEDISPLAYNAME}# variables
+#   Azure Container Registry variables
 #--------------------------------------------------------------
 
 # ############################   Dependencies         ############################
 
-# / Resource Group for the #{MODULEDISPLAYNAME}#
+# / Resource Group for the Azure Container Registry
 variable "resource_group_name" {
   type        = string
-  description = "(Required) Name of the `Resource Group` in which to create the #{MODULEDISPLAYNAME}#."
+  description = "(Required) Name of the `Resource Group` in which to create the Azure Container Registry."
 }
 
 # ############################   Required Variables   ############################
@@ -74,7 +74,7 @@ variable "owner" {
   description = "(Optional) Deployed resources owner."
   default     = null
 }
-variable "#{MODULECODE}#_additional_tags" {
+variable "additional_tags" {
   description = "(Optional) Additional tags for the Resource Group."
   type        = map(string)
   default     = null
@@ -90,5 +90,50 @@ variable "rnd_length" {
   default     = 2
 }
 
-# / #{MODULEDISPLAYNAME}# specific variables
+# / Azure Container Registry specific variables
+variable "sku" {
+  type        = string
+  description = "(Optional) Specifies the SKU of the Container Registry. Possible values are `Basic`, `Standard`, and `Premium`."
+  default     = "Basic"
+}
+variable "admin_enabled" {
+  type        = bool
+  description = "(Optional) Specifies whether the `admin user` is enabled."
+  default     = false
+}
+variable "quarantine_policy_enabled" {
+  type        = bool
+  description = "(Optional) Specifies boolean value that indicates whether `quarantine policy` is enabled."
+  default     = false
+}
+variable "public_network_access_enabled" {
+  type        = bool
+  description = "(Optional) Specifies whether the `public network access` is enabled."
+  default     = true
+}
+variable "retention_policy_in_days" {
+  type        = number
+  description = "(Optional) Specifies the number of days to retain an untagged manifest after which it gets purged. Possible values are `0` to `365`."
+  default     = 7
+}
+variable "zone_redundancy_enabled" {
+  type        = bool
+  description = "(Optional) Specifies whether the `zone redundancy` is enabled."
+  default     = false
+}
+variable "anonymous_pull_enabled" {
+  type        = bool
+  description = "(Optional) specifies whether allows `anonymous (unauthenticated) pull` access to this Container Registry."
+  default     = false
+}
+variable "data_endpoint_enabled" {
+  type        = bool
+  description = "(Optional) specifies whether to allow `trusted Azure services` to access a network restricted Container Registry."
+  default     = false
+}
+variable "network_rule_bypass_option" {
+  type        = string
+  description = "(Optional) specifies whether to allow `trusted Azure services` to access a network restricted `Container Registry`. Possible values are `None` and `AzureServices`."
+  default     = "AzureServices"
+}
 

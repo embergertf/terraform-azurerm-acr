@@ -3,5 +3,5 @@
 #
 
 #--------------------------------------------------------------
-#   Example #{MODULEDISPLAYNAME}# locals
+#   Example Azure Container Registry locals
 #--------------------------------------------------------------

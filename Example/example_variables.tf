@@ -3,7 +3,7 @@
 #
 
 #--------------------------------------------------------------
-#   Example #{MODULEDISPLAYNAME}# variables
+#   Example Azure Container Registry variables
 #--------------------------------------------------------------
 #   / Naming
 variable "name_override" { default = null }
@@ -37,5 +37,5 @@ variable "naming_values" {
 }
 
 
-#   / #{MODULEDISPLAYNAME}# specifics
-variable "#{MODULECODE}#_additional_tags" { default = null }
+#   / Azure Container Registry specifics
+variable "acr_additional_tags" { default = null }
