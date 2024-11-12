@@ -7,17 +7,17 @@
 # Modified on: 
 # Modified by: 
 # Overview:
-#   This #{MODULEDISPLAYNAME}# module:
+#   This Azure Container Registry module:
 #   - ,
 #   - .
 #
 
 # -
-# - Generate base for the #{MODULEDISPLAYNAME}# Resource
+# - Generate base for the Azure Container Registry Resource
 # -
 # https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations
 # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules
-module "#{MODULECODE}#_base" {
+module "acr_base" {
   # Terraform Cloud PMR use
   source  = "app.terraform.io/embergertf/base/azurerm"
   version = "~> 4.0"
@@ -38,21 +38,31 @@ module "#{MODULECODE}#_base" {
   add_random = var.add_random
   rnd_length = var.rnd_length
 
-  # #{MODULEDISPLAYNAME}# specifics settings
-  resource_type_code = "#{MODULECODE}#"
-  max_length         = 90
-  no_dashes          = false
+  # Azure Container Registry specifics settings
+  resource_type_code = "acr"
+  max_length         = 50
+  no_dashes          = true
 }
 
 # -
-# - Create the #{MODULEDISPLAYNAME}# Resource
+# - Create the Azure Container Registry Resource
 # -
-resource "azurerm_xxx_yyy" "this" {
-  name     = module.#{MODULECODE}#_base.name
-  location = module.#{MODULECODE}#_base.location
+resource "azurerm_container_registry" "this" {
+  name                = lower(module.acr_base.name)
   resource_group_name = var.resource_group_name
+  location            = module.acr_base.location
 
-  tags = merge(module.#{MODULECODE}#_base.tags, var.additional_tags)
+  quarantine_policy_enabled     = var.quarantine_policy_enabled
+  anonymous_pull_enabled        = var.anonymous_pull_enabled
+  data_endpoint_enabled         = var.data_endpoint_enabled
+  network_rule_bypass_option    = var.network_rule_bypass_option
+  public_network_access_enabled = var.public_network_access_enabled
+  retention_policy_in_days      = var.sku == "Premium" ? var.retention_policy_in_days : null
+  sku                           = var.sku
+  admin_enabled                 = var.admin_enabled
+  zone_redundancy_enabled       = var.zone_redundancy_enabled
+
+  tags = merge(module.acr_base.tags, var.additional_tags)
   lifecycle { ignore_changes = [tags["BuiltOn"]] }
 }
 

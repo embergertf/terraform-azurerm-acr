@@ -3,7 +3,7 @@
 #
 
 #--------------------------------------------------------------
-#   Example #{MODULEDISPLAYNAME}# main
+#   Example Azure Container Registry main
 #--------------------------------------------------------------
 #   / Resource Group
 module "rg" {
@@ -33,15 +33,15 @@ module "rg" {
 
 
 # / Resource to test
-module "#{MODULECODE}#_module_localtest" {
+module "acr_module_localtest" {
   # Local use
-  source = "../../terraform-azurerm-#{MODULECODE}#"
+  source = "../../terraform-azurerm-acr"
 
   # Naming convention
   naming_values = module.rg.naming_values
 
-  # #{MODULEDISPLAYNAME}# settings
+  # Azure Container Registry settings
   resource_group_name = module.rg.resource_group_name
 
-  additional_tags = var.#{MODULECODE}#_additional_tags
+  additional_tags = var.acr_additional_tags
 }

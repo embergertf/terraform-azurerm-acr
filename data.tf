@@ -3,5 +3,5 @@
 #
 
 #--------------------------------------------------------------
-#   #{MODULEDISPLAYNAME}# data resources
+#   Azure Container Registry data resources
 #--------------------------------------------------------------
